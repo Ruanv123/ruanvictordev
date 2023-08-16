@@ -1,0 +1,19 @@
+---
+export interface Props {
+  titulo: string;
+  url: string;
+  descricao: string;
+}
+
+const { titulo, url, descricao } = Astro.props;
+---
+
+<div class="flex flex-col">
+  <a
+    href={url}
+    target="_blank"
+    class="font-medium text-base text-[#d4d4d4] underline cursor-pointer"
+    >{titulo}</a
+  >
+  <p class="pt-3 text-base text-[#d4d4d4] font-medium">{descricao}</p>
+</div>

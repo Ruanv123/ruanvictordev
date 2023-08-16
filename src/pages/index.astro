@@ -1,0 +1,97 @@
+---
+import { getCollection } from "astro:content";
+import BaseHead from "../components/BaseHead.astro";
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
+import Title from "../components/Title.astro";
+import { DESCRIPTION, TITLE_SITE } from "../consts";
+import FormattedDate from "../components/FormattedDate.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+
+const posts = (await getCollection("blog")).sort(
+  (a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf()
+);
+---
+
+<!DOCTYPE html>
+<html lang="pt-br" class="bg-bg">
+  <head>
+    <BaseHead title={TITLE_SITE} description={DESCRIPTION} />
+  </head>
+  <body class="mx-auto w-full max-w-screen-md">
+    <Header />
+    <main class="my-4">
+      <section>
+        <div class="mt-5">
+          <Title text="About Me 🐛" />
+        </div>
+        <p class="text-md mt-2 text-justify text-base text-gray-400">
+          Meu nome é <span class="font-bold">Ruan Victor</span> e sou desenvolvedor
+          FullStack. Apaixonado pela programação e arquitetura de softwares, trabalho
+          atualmente com desenvolvimento FullStack com Next Node e TypeScript. Apaixonado
+          por UI Design e jogos competitivos. Estou no
+          <span class="font-bold">
+            ensino medio técnico em Desenvolvimento Web | Mobile
+          </span>
+        </p>
+      </section>
+      <section>
+        <div class="my-5">
+          <Title text="Projetos" />
+        </div>
+        <div class="grid grid-cols-2 gap-4 md:grid-cols-3">
+          <ProjectCard
+            titulo="Api with Auth autentication"
+            url="https://github.com/Ruanv123/Rest-Api-w-Auth"
+            descricao="api com autenticacao por jwt feita com javascript e express e prisma"
+          />
+          <ProjectCard
+            titulo="To-Do T3 Stack"
+            url="https://github.com/Ruanv123/Todo-List-T3"
+            descricao="todo list feito com t3 stack e mysql"
+          />
+          <ProjectCard
+            titulo="Portfólio Html"
+            url="https://ruan-victor.netlify.app/"
+            descricao="portfólio com html e css  e javascript"
+          />
+          <ProjectCard
+            titulo="Portfólio Html"
+            url="https://ruan-victor.netlify.app/"
+            descricao="portfólio com html e css  e javascript"
+          />
+        </div>
+      </section>
+      <section>
+        <div class="flex justify-between items-center my-5">
+          <Title text="Blog" />
+          <a href="/blog" class="text-[#d4d4d4] underline font-semibold"
+            >ver todos →</a
+          >
+        </div>
+        <div class="flex flex-col gap-5">
+          {
+            posts
+              .slice(0, 3)
+              .map((post) => (
+                <article class="flex items-center justify-between">
+                  <a
+                    href={`/blog/${post.slug}/`}
+                    class="text-[#d4d4d4] underline text-base font-semibold"
+                  >
+                    {post.data.title}
+                  </a>
+                  <FormattedDate
+                    clas="text-[#d4d4d4]"
+                    date={post.data.pubDate}
+                  />
+                </article>
+              ))
+              .reverse()
+          }
+        </div>
+      </section>
+    </main>
+    <Footer />
+  </body>
+</html>

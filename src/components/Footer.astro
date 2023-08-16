@@ -1,0 +1,32 @@
+---
+import HLink from "./HLink.astro";
+const date = new Date();
+import {
+  IconBrandGithub,
+  IconBrandLinkedin,
+  IconBrandInstagram,
+  IconMail,
+} from "@tabler/icons-react";
+---
+
+<footer class="mx-auto w-full max-w-screen-md border-t border-gray-400 py-3">
+  <div class="flex justify-between">
+    <span class="text-md hover:opacity-8 cursor-pointer text-gray-200"
+      >Ruan Victor</span
+    >
+    <div class="flex items-center gap-3 text-gray-200">
+      <HLink href="https://github.com/Ruanv123" target="_blank">
+        <IconBrandGithub />
+      </HLink>
+      <HLink href="https://www.linkedin.com/in/ruanv123/" target="_blank">
+        <IconBrandLinkedin />
+      </HLink>
+      <HLink href="mailto:ruanvictormr@gmail.com">
+        <IconMail />
+      </HLink>
+    </div>
+  </div>
+  <!-- <span class="flex items-center justify-center text-white text-sm">
+    &copy; {date.getFullYear()} All rights reserved.
+  </span> -->
+</footer>

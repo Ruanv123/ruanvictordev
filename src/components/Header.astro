@@ -1,0 +1,19 @@
+---
+import { TITLE_SITE } from "../consts";
+import HLink from "./HLink.astro";
+---
+
+<header
+  class="mx-auto flex w-full max-w-screen-md justify-between border-b border-gray-400 py-3"
+>
+  <h1 class="cursor-pointer text-xl font-medium text-gray-200 hover:opacity-80">
+    <a href="/">
+      {TITLE_SITE}
+    </a>
+  </h1>
+  <div class="flex items-center gap-5 text-gray-200">
+    <HLink href="/">Home</HLink>
+    <HLink href="/blog">Blog</HLink>
+    <!-- <HLink href="/resume">Resume</HLink> -->
+  </div>
+</header>

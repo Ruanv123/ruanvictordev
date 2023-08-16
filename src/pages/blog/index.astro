@@ -1,0 +1,47 @@
+---
+import BaseHead from "../../components/BaseHead.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import { TITLE_SITE, DESCRIPTION } from "../../consts";
+import { getCollection } from "astro:content";
+import FormattedDate from "../../components/FormattedDate.astro";
+import HLink from "../../components/HLink.astro";
+
+const posts = (await getCollection("blog")).sort(
+  (a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf()
+);
+---
+
+<!DOCTYPE html>
+<html lang="pt-br" class="bg-bg">
+  <head>
+    <BaseHead title={TITLE_SITE} description={DESCRIPTION} />
+  </head>
+  <body class="mx-auto w-full max-w-screen-md">
+    <!-- <Header /> -->
+    <main>
+      <HLink href="/" class="my-3 text-white">← voltar</HLink>
+      <div class="flex flex-col gap-12">
+        {
+          posts
+            .map((post) => (
+              <section class="flex flex-col gap-3">
+                <a
+                  href={`/blog/${post.slug}/`}
+                  class="text-white underline text-lg font-semibold"
+                >
+                  {post.data.title}
+                </a>
+                <p class="text-[#d9d9d9] font-semibold text-lg">
+                  {post.data.description}
+                </p>
+                <FormattedDate clas="text-white" date={post.data.pubDate} />
+              </section>
+            ))
+            .reverse()
+        }
+      </div>
+    </main>
+    <Footer />
+  </body>
+</html>
