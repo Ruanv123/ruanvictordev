@@ -13,7 +13,7 @@ const posts = (await getCollection("blog")).sort(
 ---
 
 <!DOCTYPE html>
-<html lang="pt-br" class="bg-bg">
+<html lang="pt-br" style="background-color: #121212;">
   <head>
     <BaseHead title="Ruan Victor" description={DESCRIPTION} />
   </head>
@@ -27,12 +27,15 @@ const posts = (await getCollection("blog")).sort(
         {
           posts
             .map((post) => (
-              <section class="container-2">
+              <section
+                class="container-2"
+                style="margin-top: 10px; margin-bottom: 10px;"
+              >
                 <a href={`/blog/${post.slug}/`} class="link-post">
                   {post.data.title}
                 </a>
                 <p class="paragraph-post">{post.data.description}</p>
-                <FormattedDate clas="text-white" date={post.data.pubDate} />
+                <FormattedDate clas="#fff" date={post.data.pubDate} />
               </section>
             ))
             .reverse()
