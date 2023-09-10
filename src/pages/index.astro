@@ -18,28 +18,30 @@ const posts = (await getCollection("blog")).sort(
   <head>
     <BaseHead title="Ruan Victor" description={DESCRIPTION} />
   </head>
-  <body class="mx-auto w-full max-w-screen-md">
+  <body
+    style="margin-left: auto; margin-right: auto; width: 100%; max-width: 768px;"
+  >
     <Header />
-    <main class="my-4">
+    <main style="margin-top: 16px; margin-bottom: 16px;">
       <section>
-        <div class="mt-5">
+        <div style="margin-top: 25px;">
           <Title text="About Me 🐛" />
         </div>
-        <p class="text-md mt-2 text-justify text-base text-gray-400">
-          Meu nome é <span class="font-bold">Ruan Victor</span> e sou desenvolvedor
+        <p class="paragraph">
+          Meu nome é <span style="font-weight:700">Ruan Victor</span> e sou desenvolvedor
           FullStack. Apaixonado pela programação e arquitetura de softwares, trabalho
           atualmente com desenvolvimento FullStack com Next Node e TypeScript. Apaixonado
           por UI Design e jogos competitivos. Estou no
-          <span class="font-bold">
+          <span style="font-weight:700">
             ensino medio técnico em Desenvolvimento Web | Mobile
           </span>
         </p>
       </section>
       <section>
-        <div class="my-5">
+        <div style="margin-top: 20px; margin-bottom: 20px;">
           <Title text="Projetos" />
         </div>
-        <div class="grid grid-cols-2 gap-4 md:grid-cols-3">
+        <div class="card-container">
           <ProjectCard
             titulo="Api with Auth autentication"
             url="https://github.com/Ruanv123/Rest-Api-w-Auth"
@@ -63,28 +65,20 @@ const posts = (await getCollection("blog")).sort(
         </div>
       </section>
       <section>
-        <div class="flex justify-between items-center my-5">
+        <div class="container-1">
           <Title text="Blog" />
-          <a href="/blog" class="text-[#d4d4d4] underline font-semibold"
-            >ver todos →</a
-          >
+          <a href="/blog" class="ver-todos">ver todos →</a>
         </div>
-        <div class="flex flex-col gap-5">
+        <div class="container-2">
           {
             posts
               .slice(0, 3)
               .map((post) => (
-                <article class="flex items-center justify-between">
-                  <a
-                    href={`/blog/${post.slug}/`}
-                    class="text-[#d4d4d4] underline text-base font-semibold"
-                  >
+                <article class="article-post">
+                  <a href={`/blog/${post.slug}/`} class="link-post2">
                     {post.data.title}
                   </a>
-                  <FormattedDate
-                    clas="text-[#d4d4d4]"
-                    date={post.data.pubDate}
-                  />
+                  <FormattedDate clas="#d4d4d4" date={post.data.pubDate} />
                 </article>
               ))
               .reverse()

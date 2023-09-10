@@ -17,24 +17,21 @@ const posts = (await getCollection("blog")).sort(
   <head>
     <BaseHead title="Ruan Victor" description={DESCRIPTION} />
   </head>
-  <body class="mx-auto w-full max-w-screen-md">
+  <body
+    style="margin-left: auto; margin-right: auto; width: 100%; max-width: 768px;"
+  >
     <!-- <Header /> -->
     <main>
-      <HLink href="/" class="my-3 text-white">← voltar</HLink>
-      <div class="flex flex-col gap-12">
+      <HLink href="/">← voltar</HLink>
+      <div class="container-2">
         {
           posts
             .map((post) => (
-              <section class="flex flex-col gap-3">
-                <a
-                  href={`/blog/${post.slug}/`}
-                  class="text-white underline text-lg font-semibold"
-                >
+              <section class="container-2">
+                <a href={`/blog/${post.slug}/`} class="link-post">
                   {post.data.title}
                 </a>
-                <p class="text-[#d9d9d9] font-semibold text-lg">
-                  {post.data.description}
-                </p>
+                <p class="paragraph-post">{post.data.description}</p>
                 <FormattedDate clas="text-white" date={post.data.pubDate} />
               </section>
             ))
