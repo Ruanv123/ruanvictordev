@@ -1,0 +1,90 @@
+---
+pubDate: "September 10, 2023"
+title: Fastify Framework Node
+category: React
+description: Tutorial de utilização do Fastify com typescript e prisma
+---
+
+# Introdução api com Fastify
+
+No post de hoje vamos desenvolver uma api com prisma e fastify usando banco de dados postgres + docker
+
+Necessario:
+
+- Node instalado
+- Editor de Código
+- Postman
+
+## Fastify
+
+O fastify é um mini framework node de servidor https e rest api
+
+## Prisma
+
+O prisma é um ORM de banco de dados baseado em javascript que se tornou muito popular pela sua velocidade de desenvolvimento e a sua facilidade de aprendizado!
+
+### Vamos iniciar o desenvolvimento
+
+Para iniciar um projeto node crie uma pasta com o nome que voce quiser. Depois execute o comando abaixo.
+
+Copie de acordo com seu gerenciador de pacotes
+
+PNPM:
+
+```bash
+    pnpm init
+```
+
+NPM:
+
+```bash
+    npm init -y
+```
+
+yarn:
+
+```bash
+    yarn init -y
+```
+
+Eu utilizo o pnpm entao o resto do tutorial sera usado o pnpm mas voce pode apenas substituir o que eu escrever pelo `npm` que o resultado será o mesmo
+
+### vamos baixar as dependencias de desenvolvimento
+
+Vamos utilizar o prisma, o typescript, o fastify e o tsx para iniciar o servidor sem ter que compilar o typescript
+
+```bash
+  pnpm i -D typescript @types/node prisma tsx
+```
+
+entao vamos iniciar o prisma
+
+```bash
+  pnpm prisma init --datasource-provider postgresql
+```
+
+Passei a flag datasource para gerar o prisma configurado com o postgres por padrão
+
+### vamos configurar o package.json
+
+para criar um script que vai rodar a aplicação e vai atualizar toda vez que sofrer atualizacao no código!
+
+```json
+  "dev": "tsx watch src/server.ts"
+```
+
+### agora vamos criar as nossas pastas
+
+1. crie uma pasta chamada `src` no diretório
+2. Crie um arquivo `server.ts` dentro da pasta `src`
+
+entao vamos configurar o server 
+
+```typescript
+
+  import fastify from 'fastify'
+
+  const app = fastify()
+
+  
+```

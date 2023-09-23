@@ -1,0 +1,32 @@
+---
+pubDate: "September 14, 2023"
+title: Métodos de Array Javascript
+category: Javascript
+description: Todos os principais métodos de array e string javascript
+---
+
+# Array
+
+O que é um array javascript? entao um array e basicamente uma lista de dados [1,2,3,4,5] onde cada item contem uma posição exemplo [1,2,3] posicao = 0,1,2. Em um array a primeira posição é sempre o 0
+
+# Principais métodos
+
+- Array.pop()
+- Array.push()
+- Array.map()
+- Array.filter()
+- Array.concat()
+- Array.forEach()
+- Array.join()
+- Array.pop()
+- Array.push()
+- Array.shift()
+- Array.slice()
+
+# String
+
+uma string e literalmente um text entre 'adada'
+
+## principais métodos
+
+- string.trim()
