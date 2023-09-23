@@ -14,7 +14,8 @@ Olá pessoal hoje me veio a necesidade de criar um projeto com vite e me deparei
 - Eslint
 - Prettier
 - Tailwind css
-- Vitest
+- Jest
+- React Testing Library
 - Storybook
 
 [github]()
@@ -153,4 +154,95 @@ entao o storybook ja vai estar configurado vamos apenas adicionar o css no nosso
 
 ```js
 import "../src/index.css";
+```
+
+# Jest
+
+vamos instalar o jest
+
+```bash
+  pnpm install jest @types/jest -D
+```
+
+criar o script no package.json
+
+```json
+{
+  "test": "jest"
+}
+```
+
+criar o arquivo na raiz do src `src/App.spec.jsx`
+
+```jsx
+import { render, screen } from "@testing-library/react";
+import App from "./App";
+
+describe("<App />", () => {
+  it("should display elements", () => {
+    render(<App />);
+    expect(
+      screen.getByRole("heading", { name: /vite \+ react/i })
+    ).toBeInTheDocument();
+  });
+});
+```
+
+agora vamos rodar o test
+
+```bash
+  pnpm test
+```
+
+# Testing Library
+
+vamos instalar
+
+```bash
+  pnpm install @testing-library/jest-dom @testing-library/react @testing-library/user-event -D
+```
+
+para op testing library funcionar vamos instalar o babel
+
+```bash
+
+  pnpm i @babel/core @babel/preset-env @babel/preset-react babel-jest identity-obj-proxy jest-environment-jsdom -D
+```
+
+entao vamos criar na raiz do projeto um arquivo chamado `jest.config.js`
+
+e entao passar essas configurações para ele
+
+```javascript
+module.exports = {
+  testEnvironment: "jest-environment-jsdom",
+  setupFilesAfterEnv: ["<rootDir>/.jest/setup-tests.js"],
+  moduleNameMapper: {
+    "\\.(gif|ttf|eot|svg|png)$": "<rootDir>/.jest/mocks/fileMock.js",
+    "\\.(css|less|sass|scss)$": "identity-obj-proxy",
+  },
+};
+```
+
+e criar um arquivo `babel.config.js` e add isso a ele
+
+```json
+{
+  "presets": [
+    ["@babel/preset-env", { "targets": { "esmodules": true } }],
+    ["@babel/preset-react", { "runtime": "automatic" }]
+  ]
+}
+```
+
+dentro da pasta `jest` criar um `setup-tests.js`
+
+```js
+import "@testing-library/jest-dom";
+```
+
+tambem criar um arquivo `fileMock.js` dentro da pasta `jest`
+
+```js
+module.exports = "test-file-stub";
 ```
