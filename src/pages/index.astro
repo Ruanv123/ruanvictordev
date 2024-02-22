@@ -11,6 +11,17 @@ import ProjectCard from "../components/ProjectCard.astro";
 const posts = (await getCollection("blog")).sort(
   (a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf()
 );
+
+const compareDates = (a: any, b: any) => {
+  const dateA = new Date(a.data.pubDate).getTime();
+  const dateB = new Date(b.data.pubDate).getTime();
+  
+  // Comparar os valores de tempo das datas
+  return dateB - dateA;
+};
+
+posts.sort(compareDates)
+
 ---
 
 <!DOCTYPE html>
@@ -72,8 +83,9 @@ const posts = (await getCollection("blog")).sort(
         <div class="container-2">
           {
             posts
-              .slice(0, 3)
-              .map((post) => (
+            .slice(0,3)
+            .reverse()
+            .map((post) => (
                 <article class="article-post">
                   <a href={`/blog/${post.slug}/`} class="link-post2">
                     {post.data.title}
