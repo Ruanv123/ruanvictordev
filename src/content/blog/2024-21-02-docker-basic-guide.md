@@ -199,3 +199,12 @@ docker-compose restart
 # Comandos do docker-compose
 
 o docker compose usa a linguagem `yaml` então basta digitar em yaml
+
+
+# Docker network
+
+
+
+
+## Links uteis
+- [https://dev.to/clintonrocha98/primeiros-passos-no-docker-m0k]
