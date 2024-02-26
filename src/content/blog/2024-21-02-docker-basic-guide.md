@@ -53,7 +53,7 @@ COPY . .
 CMD ["node", "app.js"]
 ```
 
-e agora o `docker-compose.yml` que é uma ferramenta que permite definir e gerenciar aplicativos Docker multicontêiner em um único arquivo de configuração. Com o Docker Compose, você pode definir as configurações para vários serviços, incluindo a imagem, portas expostas, variáveis de ambiente, volumes, redes, entre outros, tudo em um arquivo YAML simples. Exemplo de docker-compose com postgres, rabbitmq e redis
+e agora o `docker-compose.yml` que é uma ferramenta que permite definir e gerenciar aplicativos Docker multiservicos dentro de um container em um único arquivo de configuração. Com o Docker Compose, você pode definir as configurações para vários serviços, incluindo a imagem, portas expostas, variáveis de ambiente, volumes, redes, entre outros, tudo em um arquivo YAML simples. Exemplo de docker-compose com postgres, rabbitmq e redis
 
 ```Docker
 

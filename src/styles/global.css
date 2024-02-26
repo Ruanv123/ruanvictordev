@@ -45,7 +45,9 @@ img {
 }
 code {
   padding: 2px 5px;
-  background-color: #c282db;
+  /* background-color: #c282db; */
+  color: #22c55e;
+  background-color: #414141;
 }
 pre {
   padding: 1rem;
